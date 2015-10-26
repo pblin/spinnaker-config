@@ -1,0 +1,28 @@
+server:
+  port: 8082
+
+spinnaker:
+  cassandra:
+    cluster: spinnaker
+    keyspace: echo
+  baseUrl: http://localhost:8084
+
+echo:
+  baseUrl: http://localhost:8083
+
+orca:
+  baseUrl: http://localhost:8083
+
+front50:
+  baseUrl: http://localhost:8080
+
+search:
+  index: event_history
+
+cassandra:
+  embedded: false
+  host: localhost
+
+logging:
+  level:
+    retrofit: DEBUG

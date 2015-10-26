@@ -1,0 +1,26 @@
+server:
+  port: 8083
+
+clouddriver:
+  baseUrl: http://clouddriver.white.springapps.io
+
+front50:
+  baseUrl: http://front50.white.springapps.io
+tide:
+  baseUrl: http://localhost:8090
+oort:
+  baseUrl: ${clouddriver.baseUrl}
+mort:
+  baseUrl: ${clouddriver.baseUrl}
+kato:
+  baseUrl: ${clouddriver.baseUrl}
+
+echo:
+  enabled: true
+  baseUrl: http://echo.white.springapps.io
+bakery:
+  baseUrl: http://localhost:8089
+
+redis:
+  connection: ${REDIS_URL:redis://localhost:6379}
+

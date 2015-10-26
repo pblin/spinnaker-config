@@ -1,0 +1,53 @@
+server:
+  port: 8084
+
+clouddriver:
+  baseUrl: http://clouddriver.white.springapps.io
+
+services:
+  oort:
+    baseUrl: ${clouddriver.baseUrl}
+  orca:
+    baseUrl: http://orca.white.springapps.io
+  front50:
+    baseUrl: http://front50.white.springapps.io
+  mort:
+    baseUrl: ${clouddriver.baseUrl}
+  kato:
+    baseUrl: ${clouddriver.baseUrl}
+#optional services:
+  echo:
+    enabled: true
+    baseUrl: http://echo.white.springapps.io
+  flapjack:
+    enabled: false
+  igor:
+    enabled: true
+    baseUrl: http://igor.white.springapps.io
+  mahe:
+    enabled: false
+
+redis:
+  connection: redis://localhost:6379
+
+swagger:
+  enabled: true
+  title: Spinnaker API
+  description:
+  contact:
+  patterns:
+    - .*tasks.*
+    - .*applications.*
+    - .*securityGroups.*
+    - /search
+    - .*pipelines.*
+    - .*loadBalancers.*
+    - .*instances.*
+    - .*images.*
+    - .*elasticIps.*
+    - .*credentials.*
+    - .*events.*
+    - .*builds.*
+    - .*instanceTypes.*
+    - .*vpcs.*
+    - .*subnets.*
