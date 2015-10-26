@@ -22,5 +22,5 @@ bakery:
   baseUrl: http://localhost:8089
 
 redis:
-  connection: ${REDIS_URL:redis://localhost:6379}
+  connection: ${REDIS_URL:redis://user:f59357d8-33fd-4856-b201-16da40f5c276@10.68.203.82:6379}
 
