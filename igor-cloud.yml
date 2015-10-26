@@ -15,7 +15,7 @@ jenkins:
 
 services:
   echo:
-    baseUrl: http://echo. white.springapps.io
+    baseUrl: http://echo.white.springapps.io
 spinnaker:
   build:
     pollInterval: 30
