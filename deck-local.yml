@@ -1,0 +1,32 @@
+deck:
+  defaultProviders: 
+    - cf
+  providers:
+    cf:
+      defaults:
+        account: 'prod'
+        region: 'spinnaker'
+      primaryAccounts: 
+        - prod
+        - staging
+        - dev
+      primaryRegions: 
+        - spinnaker
+      preferredZonesByAccount:
+        prod:
+          spinnaker: 
+            - production
+        staging:
+          spinnaker: 
+            - staging
+        dev:
+          spinnaker:
+            - development
+    titan:
+      defaults:
+        account: 'titantest'
+        region: 'us-east-1'
+      primaryAccounts: 
+        - test
+      primaryRegions: 
+        - us-east-1
