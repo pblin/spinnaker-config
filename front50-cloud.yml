@@ -14,7 +14,7 @@ spinnaker:
 
 cassandra:
   embedded: true
-  host: localhost 
+  host: 127.0.0.1 
 
 logging:
   level:
