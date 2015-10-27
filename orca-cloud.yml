@@ -14,7 +14,8 @@ mort:
   baseUrl: ${clouddriver.baseUrl}
 kato:
   baseUrl: ${clouddriver.baseUrl}
-
+igor:
+  baseUrl: http://igor.white.springapps.io
 echo:
   enabled: true
   baseUrl: http://echo.white.springapps.io
