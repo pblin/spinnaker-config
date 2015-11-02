@@ -4,6 +4,9 @@ server:
 clouddriver:
   baseUrl: http://localhost:7002
 
+discoveryHosts:
+  - http://localhost:8761
+
 services:
   oort:
     baseUrl: ${clouddriver.baseUrl}
