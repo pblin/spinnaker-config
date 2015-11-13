@@ -51,3 +51,7 @@ swagger:
     - .*instanceTypes.*
     - .*vpcs.*
     - .*subnets.*
+
+logging:
+  level:
+    retrofit: DEBUG
