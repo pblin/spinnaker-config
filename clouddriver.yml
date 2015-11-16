@@ -44,9 +44,10 @@ google:
 cf:
   enabled: ${providers.cf.enabled:false}
 
+  # TODO: Migrate this out of clouddriver and into either orca or igor
   jenkins:
-    username: ${providers.services.jenkins.defaultMaster.username}
-    password: ${providers.services.jenkins.defaultMaster.password}
+    username: ${services.jenkins.defaultMaster.username}
+    password: ${services.jenkins.defaultMaster.password}
 
   accounts:
     - name: ${providers.cf.primaryCredentials.name}

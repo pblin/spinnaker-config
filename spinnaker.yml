@@ -141,6 +141,10 @@ services:
     embedded: false
     cluster: CASS_SPINNAKER
 
+  slack:
+    enabled: false
+    token: # Expected in spinnaker-local.yml
+
 
 providers:
   aws:
