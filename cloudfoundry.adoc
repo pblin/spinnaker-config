@@ -1,0 +1,149 @@
+:toc: right
+:toclevels: 4
+
+== Spinnaker for Cloud Foundry
+
+Spinnaker has built-in support for Cloud Foundry
+
+* You can run all the parts on Cloud Foundry
+* Cloud Foundry can be the target of deployments
+* Cloud Foundry's enterprise version of Jenkins can be the trigger for Spinnaker pipelines
+
+This document is a starting point if you want to either use or develop in these configurations.
+
+=== Developing Spinnaker for CF
+
+Want to work on Spinnaker's Cloud Foundry features? Here are the key steps you'll need to get it up and running on your local machine.
+
+==== Step 0 
+
+To work on Cloud Foundry, you need:
+
+* JDK 8
+* working knowledge of Spring MVC, Spring Boot, and Groovy
+* a suitable IDE (IntelliJ, Spring Tool Suite with Groovy support, Sublime Text, ...)
+
+==== Checking out and running the code
+
+. Clone the following repositories:
++
+----
+git clone git@github.com:spinnaker/clouddriver.git
+git clone git@github.com:spinnaker/deck.git
+git clone git@github.com:spinnaker/echo.git
+git clone git@github.com:spinnaker/front50.git
+git clone git@github.com:spinnaker/gate.git
+git clone git@github.com:spinnaker/igor.git
+git clone git@github.com:spinnaker/orca.git
+----
++
+. Clone this configuration => `git clone git@github.com:gregturn/spinnaker-config.git`
+. Create a home directory of configs using a symlink like this => `ln -s /path/to/spinnaker-config ~/.spinnaker`
+. Open a separate shell for each of these repositories, and `cd` into them.
+. Run echo, front50, gate, igor, and orca in "local" mode by typing the following in each shell => `SPRING_PROFILES_ACTIVE=local ./gradlew clean bootRun`
+. Run clouddriver in "local" mode with your CF credentials by typing => `SPRING_PROFILES_ACTIVE=local CF_ACCOUNT_USER=<your userid> CF_ACCOUNT_PASSWORD=<your password> ./gradlew clean bootRun`
+. In deck, copy in the cf settings by typing => `cp ~/.spinnaker/settings.js /path/to/deck/settings.js`
+. Run deck in "local" mode by typing => `API_HOST=http://localhost:8084 npm start`
+. Visit http://localhost:9000/webpack-dev-server/
+
+==== Services
+
+Spinnaker uses not only the preceding modules, but redis and cassandra. To run Spinnaker, you need to install these as well.
+
+If you are using a Mac, you can install redis via homebrew:
+
+----
+$ brew install redis
+$ redis-server
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 3.0.4 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 52305
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+52305:M 10 Nov 11:38:13.563 # Server started, Redis version 3.0.4
+----
+
+Now you have a local redis server up and running.
+
+Spinnaker uses cassandra 1.2, which is not the default homebrew formula. To do this, you need to install version support:
+
+----
+$ brew update
+$ brew tap homebrew/versions
+$ brew install cassandra12
+$ cassandra
+----
+
+This launches cassandra for local development work, but you aren't done. With a standalone cassandra instance, you have to load the keyspaces with a https://github.com/spinnaker/spinnaker/tree/master/cassandra[set of scripts]. This is analogous to loading a database schema.
+
+WARNING: To run Spinnaker locally, you need standalone cassandra. Otherwise, the two services will collide if they try to run embedded instances separately on the same default port. However, when deploying to Pivotal Cloud Foundry, p-cassandra supplies cassandra 2.0 and doesn't work. In that situation, you need embedded cassandra, which pre-loades the keyspaces. This is covered in the configuration settings mentioned earlier.
+
+This will spin up all the parts of Spinnaker needed to work with stuff. To develop any one module, shut down the copy in its shell, and instead open it up inside your IDE. Find the `Main` class and run it with the same environmental overrides.
+
+=== Running Spinnaker on Cloud Foundry
+
+Want to use Spinnaker in a Cloud Foundry environment? Here are the steps to build and push to your CF environment.
+
+clouddriver:
+
+. `./gradlew clean buildDeb`
+. `cf push clouddriver -p clouddriver-web/build/install/clouddriver`
+
+echo:
+
+. `./gradlew clean buildDeb`
+. `cf push gate -p echo-web/build/install/gate/`
+
+front50:
+
+. `./gradlew clean buildDeb`
+. `cf push gate -p front50-web/build/install/gate/`
+
+gate:
+
+. `./gradlew clean buildDeb`
+. `cf push gate -p gate-web/build/install/gate/`
+
+igor:
+
+. `./gradlew clean buildDeb`
+. `cf push igor -p igor-web/build/install/gate/`
+
+orca:
+
+. `./gradlew clean buildDeb`
+. `cf push orca -p orca-web/build/install/gate/`
+
+deck:
+
+. `./gradlew clean build -x test`
+. `cf push deck -p build/webpack/ -b staticfile_buildpack`
+
+WARNING: Running deck with the static buildpack will NOT read environment variables in production. You MUST put the proper gate URL and protocol in settings.js as the default values.
+
+NOTE: There is an effort underway to add http://cloud.spring.io/spring-cloud-config/[Spring Cloud Config Server] as an option for configuring Spinnaker modules. Until that time, it requires a lot of manual steps to configure each of these microservices to talk properly with each other. Stay tuned.
+
+=== Cloudbees Enterprise Jenkins
+
+If you are running Pivotal Cloud Foundry with https://network.pivotal.io/products/cloudbees[CloudBees Jenkins Enterprise], you can configure your build jobs there. Upon doing so, TBD...
+
+== Issues
+
+Got problems? Check these channels for help and guidance:
+
+* File https://github.com/spinnaker/spinnaker/issues[detailed issues] with this repository, unless you know the specific module that is failing. HINT: A failure in one module could be sourced in another.
+* Check in on the spinnaker slack chat channel. Visit #dev if you are developing spinnaker and #user if you are interacting with a running instance.
+* Post questions at http://stackoverflow.com/questions/tagged/spinnaker[stackoverflow underneath the "spinnaker" tag].
