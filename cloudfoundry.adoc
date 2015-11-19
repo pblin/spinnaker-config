@@ -164,7 +164,7 @@ deck:
 
 WARNING: Running deck with the static buildpack will NOT read environment variables in production. You MUST put the proper gate URL and protocol in settings.js as the default values.
 
-
+Pushing out new copies of software does not require that set the environment variables again. That only has to happen once.
 
 === Cloudbees Enterprise Jenkins
 
