@@ -97,35 +97,65 @@ This will spin up all the parts of Spinnaker needed to work with stuff. To devel
 
 Want to use Spinnaker in a Cloud Foundry environment? Here are the steps to build and push to your CF environment.
 
+First and foremost, you need Spring Cloud Config Server. The alternative will keep you up all night configuring individual property files.
+
+To do so, you need to visit each repo clone you created up above and do this:
+
+----
+$ cd clouddriver
+$ git remote add gregturn git@github.com:gregturn/clouddriver.git
+$ git fetch gregturn
+$ git checkout spring-cloud
+----
+
+Each of the modules above (except decK) has a spring-cloud branch. Repeat similar steps (swapping out `clouddriver` with the actual project) and then build that branch.
+
+Once you have done that, you can start pushing things to PCF as shown below:
+
 clouddriver:
 
 . `./gradlew clean buildDeb`
 . `cf push clouddriver -p clouddriver-web/build/install/clouddriver`
+. `cf set-env clouddriver CF_ACCOUNT_NAME <your CF email>`
+. `cf set-env clouddriver CF_ACCOUNT_PASSWORD <your CF password>`
+. `cf set-env clouddriver SPRING_CLOUD_CONFIG_ENABLED true`
+. `cf set-env clouddriver SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
 
 echo:
 
 . `./gradlew clean buildDeb`
 . `cf push gate -p echo-web/build/install/gate/`
+. `cf set-env echo SPRING_CLOUD_CONFIG_ENABLED true`
+. `cf set-env echo SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
 
 front50:
 
 . `./gradlew clean buildDeb`
 . `cf push gate -p front50-web/build/install/gate/`
+. `cf set-env front50 SPRING_CLOUD_CONFIG_ENABLED true`
+. `cf set-env front50 SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
 
 gate:
 
 . `./gradlew clean buildDeb`
 . `cf push gate -p gate-web/build/install/gate/`
+. `cf set-env gate SPRING_CLOUD_CONFIG_SERVER_BOOTSTRAP true`
+. `cf set-env gate SPRING_CLOUD_CONFIG_SERVER_ENABLED true`
+. `cf set-env gate SPRING_CLOUD_CONFIG_SERVER_GIT_URI https://github.com/gregturn/spinnaker-config/`
 
 igor:
 
 . `./gradlew clean buildDeb`
 . `cf push igor -p igor-web/build/install/gate/`
+. `cf set-env igor SPRING_CLOUD_CONFIG_ENABLED true`
+. `cf set-env igor SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
 
 orca:
 
 . `./gradlew clean buildDeb`
 . `cf push orca -p orca-web/build/install/gate/`
+. `cf set-env igor SPRING_CLOUD_CONFIG_ENABLED true`
+. `cf set-env igor SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
 
 deck:
 
@@ -134,7 +164,7 @@ deck:
 
 WARNING: Running deck with the static buildpack will NOT read environment variables in production. You MUST put the proper gate URL and protocol in settings.js as the default values.
 
-NOTE: There is an effort underway to add http://cloud.spring.io/spring-cloud-config/[Spring Cloud Config Server] as an option for configuring Spinnaker modules. Until that time, it requires a lot of manual steps to configure each of these microservices to talk properly with each other. Stay tuned.
+
 
 === Cloudbees Enterprise Jenkins
 
