@@ -12,7 +12,7 @@ window.spinnakerSettings = {
   bakeryDetailUrl: bakeryDetailUrl,
   authEndpoint: authEndpoint,
   pollSchedule: 30000,
-  defaultTimeZone: 'America/Los_Angeles', // see http://momentjs.com/timezone/docs/#/data-utilities/
+  defaultTimeZone: process.env.TIMEZONE || 'America/Los_Angeles', // see http://momentjs.com/timezone/docs/#/data-utilities/
   providers: {
     cf: {
       defaults: {
@@ -21,7 +21,7 @@ window.spinnakerSettings = {
       },
       primaryAccounts: ['prod', 'staging', 'dev'],
       primaryRegions: ['spinnaker'],
-      challengeDestructiveActions: ['prod'],
+      challengeDestructiveActions: ['prod', 'staging', 'dev'],
       defaultSecurityGroups: [],
       accountBastions : {
       },
@@ -40,7 +40,6 @@ window.spinnakerSettings = {
         }
       }
     },
-    //aws: {}
   },
   whatsNew: {
     gistId: '32526cd608db3d811b38',
@@ -53,5 +52,6 @@ window.spinnakerSettings = {
     fastProperty: true,
     vpcMigrator: false,
     clusterDiff: true,
+    rebakeControlEnabled: false,
   },
 };
