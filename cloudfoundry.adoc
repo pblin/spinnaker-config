@@ -3,6 +3,8 @@
 
 == Spinnaker for Cloud Foundry
 
+WARNING: Spinnaker for Cloud Foundry and Spinnaker on Cloud Foundry is at an alpha stage. We have a proof of concept, not something ready for production. Before showing to any customers, it's best if you experiment with it first and understand what it does and doesn't do. You've been warned.
+
 Spinnaker has built-in support for Cloud Foundry
 
 * You can run all the parts on Cloud Foundry
