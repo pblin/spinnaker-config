@@ -41,7 +41,6 @@ git clone git@github.com/gregturn/spinnaker-config.git
 ----
 +
 . Clone this configuration => `git clone git@github.com:gregturn/spinnaker-config.git`
-. Create a home directory of configs using a symlink like this => `ln -s /path/to/spinnaker-config ~/.spinnaker`
 . Open a separate shell for each of these repositories, and `cd` into them.
 . Run echo, front50, gate, igor, and orca in "local" mode by typing the following in each shell => `./gradlew clean bootRun -Dspring.config.location=/path/to/spinnaker-config/` (<-- need trailing '/')
 . Run clouddriver in "local" mode with your CF credentials by typing => `CF_ACCOUNT_USER=<your userid> CF_ACCOUNT_PASSWORD=<your password> ./gradlew clean bootRun -Dspring.config.location=/path/to/spinnaker-config/`
