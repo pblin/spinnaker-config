@@ -52,6 +52,8 @@ git clone git@github.com:spinnaker/orca.git
 
 Spinnaker uses not only the preceding modules, but redis and cassandra. To run Spinnaker, you need to install these as well.
 
+===== Redis
+
 If you are using a Mac, you can install redis via homebrew:
 
 ----
@@ -80,7 +82,9 @@ $ redis-server
 
 Now you have a local redis server up and running.
 
-Spinnaker uses cassandra 1.2, which is not the default homebrew formula. To do this, you need to install version support:
+===== Cassandra
+
+Spinnaker uses Apache Cassandra 1.2, which is not the default homebrew formula. To do this, you need to install version support:
 
 ----
 $ brew update
@@ -94,6 +98,14 @@ This launches cassandra for local development work, but you aren't done. With a 
 WARNING: To run Spinnaker locally, you need standalone cassandra. Otherwise, the two services will collide if they try to run embedded instances separately on the same default port. However, when deploying to Pivotal Cloud Foundry, p-cassandra supplies cassandra 2.0 and doesn't work. In that situation, you need embedded cassandra, which pre-loades the keyspaces. This is covered in the configuration settings mentioned earlier.
 
 This will spin up all the parts of Spinnaker needed to work with stuff. To develop any one module, shut down the copy in its shell, and instead open it up inside your IDE. Find the `Main` class and run it with the same environmental overrides.
+
+===== Jenkins
+
+You can install p-jenkins in your cloud environment. It requires going to CloudBees and requesting a license (which I did, and managed to get a freebie). But if you're running in a local environment, you can probably get by using the https://jenkins-ci.org/[OSS version].
+
+Got Docker? It might be even easier to run it that way. (I don't know, you tell me!)
+
+If you need to trigger pipelines, you will want to set this up at some point.
 
 === Running Spinnaker on Cloud Foundry
 
