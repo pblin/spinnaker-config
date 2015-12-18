@@ -43,7 +43,7 @@ git clone git@github.com:spinnaker/orca.git
 . Make any edits you need to `/path/to/spinnaker-config/spinnaker-local.yml` to plugin custom PCF/PWS details, etc.
 . Open a separate shell for each of these repositories, and `cd` into them.
 . Run echo, front50, gate, igor, and orca by typing the following in each shell => `./gradlew clean bootRun -Dspring.config.location=/path/to/spinnaker-config/` (<-- need trailing '/')
-. Run clouddriver with your CF credentials by typing => `CF_ACCOUNT_USER=<your userid> CF_ACCOUNT_PASSWORD=<your password> ./gradlew clean bootRun -Dspring.config.location=/path/to/spinnaker-config/`
+. Run clouddriver with your CF credentials by typing => `CF_ACCOUNT_NAME=<your userid> CF_ACCOUNT_PASSWORD=<your password> ./gradlew clean bootRun -Dspring.config.location=/path/to/spinnaker-config/`
 . In deck, copy in the cf settings by typing => `cp /path/to/spinnaker-config/settings.js /path/to/deck/settings.js`
 . Install deck bits with `npm install`
 . Run deck by typing => `API_HOST=http://localhost:8084 npm start`
