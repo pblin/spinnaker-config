@@ -129,4 +129,7 @@ services:
 
 logging:
   level:
+    com:
+      netflix:
+        spinnaker: DEBUG
     retrofit: TRACE
