@@ -16,27 +16,21 @@ window.spinnakerSettings = {
   providers: {
     cf: {
       defaults: {
-        account: 'prod',
-        region: 'spinnaker'
+        account: 'dev',
+        region: 'micropcf-org'
       },
-      primaryAccounts: ['prod', 'staging', 'dev'],
-      primaryRegions: ['spinnaker'],
-      challengeDestructiveActions: ['prod', 'staging', 'dev'],
+      primaryAccounts: ['dev'],
+      primaryRegions: ['micropcf-org'],
+      challengeDestructiveActions: ['dev'],
       defaultSecurityGroups: [],
       accountBastions : {
       },
       preferredZonesByAccount: {
-        prod: {
-          'spinnaker': ['production']
-        },
-        staging: {
-          'spinnaker': ['staging']
-        },
         dev: {
-          'spinnaker': ['development']
+          'micropcf-org': ['micropcf-space']
         },
         default: {
-          'spinnaker': ['production']
+          'micropcf-org': ['micropcf-space']
         }
       }
     }

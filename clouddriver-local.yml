@@ -7,17 +7,3 @@ cf:
       space: ${providers.cf.defaultSpace}
       username: ${cf.account.name}
       password: ${cf.account.password}
-    - name: staging
-      api: ${providers.cf.primaryCredentials.api}
-      console: ${providers.cf.primaryCredentials.console}
-      org: ${providers.cf.defaultOrg}
-      space: staging
-      username: ${cf.account.name}
-      password: ${cf.account.password}
-    # - name: development
-    #   api: ${providers.cf.primaryCredentials.api}
-    #   console: ${providers.cf.primaryCredentials.console}
-    #   org: ${providers.cf.defaultOrg}
-    #   space: development
-    #   username: ${cf.account.name}
-    #   password: ${cf.account.password}

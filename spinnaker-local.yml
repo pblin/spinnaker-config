@@ -38,12 +38,12 @@ providers:
     # set enabled and provide primary credentials for deploying.
     # Enabling cf is independent of other providers.
     enabled: true
-    defaultOrg: spinnaker
-    defaultSpace: production
+    defaultOrg: micropcf-org
+    defaultSpace: micropcf-space
     primaryCredentials:
-      name: prod
-      api: https://api.white.springapps.io
-      console: https://apps.white.springapps.io
+      name: dev
+      api: https://api.local.micropcf.io
+      console: https://api.local.micropcf.io
     # You must also supply cf.account.username and cf.account.password through env properties
 
 services:
