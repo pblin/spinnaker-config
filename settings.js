@@ -20,7 +20,7 @@ window.spinnakerSettings = {
         region: 'spinnaker'
       },
       primaryAccounts: ['prod', 'staging', 'dev'],
-      primaryRegions: ['spinnaker'],
+      primaryRegions: ['spinnaker', 'micropcf-org'],
       challengeDestructiveActions: ['prod', 'staging', 'dev'],
       defaultSecurityGroups: [],
       accountBastions : {
@@ -33,7 +33,7 @@ window.spinnakerSettings = {
           'spinnaker': ['staging']
         },
         dev: {
-          'spinnaker': ['development']
+          'micropcf-org': ['micropcf-space']
         },
         default: {
           'spinnaker': ['production']

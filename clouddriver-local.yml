@@ -14,10 +14,10 @@ cf:
       space: staging
       username: ${cf.account.name}
       password: ${cf.account.password}
-    # - name: development
-    #   api: ${providers.cf.primaryCredentials.api}
-    #   console: ${providers.cf.primaryCredentials.console}
-    #   org: ${providers.cf.defaultOrg}
-    #   space: development
-    #   username: ${cf.account.name}
-    #   password: ${cf.account.password}
+    - name: dev
+      api: https://api.local.micropcf.io
+      console: https://api.local.micropcf.io
+      org: micropcf-org
+      space: micropcf-space
+      username: ${cf.account2.name}
+      password: ${cf.account2.password}
