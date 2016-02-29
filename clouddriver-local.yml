@@ -7,6 +7,8 @@ cf:
       space: ${providers.cf.defaultSpace}
       username: ${cf.account.name}
       password: ${cf.account.password}
+      artifactUsername: ${cf.repo.username}
+      artifactPassword: ${cf.repo.password}
     - name: staging
       api: ${providers.cf.primaryCredentials.api}
       console: ${providers.cf.primaryCredentials.console}
@@ -14,10 +16,14 @@ cf:
       space: staging
       username: ${cf.account.name}
       password: ${cf.account.password}
-    # - name: development
+      artifactUsername: ${cf.repo.username}
+      artifactPassword: ${cf.repo.password}
+    # - name: dev
     #   api: ${providers.cf.primaryCredentials.api}
     #   console: ${providers.cf.primaryCredentials.console}
     #   org: ${providers.cf.defaultOrg}
-    #   space: development
+    #   space: microservices
     #   username: ${cf.account.name}
     #   password: ${cf.account.password}
+    #   artifactUsername: ${cf.repo.username}
+    #   artifactPassword: ${cf.repo.password}
