@@ -129,6 +129,8 @@ Once you have done that, you can start pushing things to PCF as shown below:
 
 clouddriver:
 
+> **NOTE**: Pending https://github.com/spinnaker/clouddriver/pull/465 to build uber jars
+
 . `./gradlew clean buildDeb`
 . `cf push clouddriver -p clouddriver-web/build/install/clouddriver`
 . `cf set-env clouddriver CF_ACCOUNT_NAME <your CF email>`
@@ -138,19 +140,21 @@ clouddriver:
 
 echo:
 
-. `./gradlew clean buildDeb`
-. `cf push gate -p echo-web/build/install/gate/`
+. `./gradlew clean build`
+. `cf push echo -p echo-web/build/libs/echo-web-<version>.jar`
 . `cf set-env echo SPRING_CLOUD_CONFIG_ENABLED true`
 . `cf set-env echo SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
 
 front50:
 
-. `./gradlew clean buildDeb`
-. `cf push gate -p front50-web/build/install/gate/`
+. `./gradlew clean build`
+. `cf push front50 -p front50-web/build/libs/front50-web-<version>.jar`
 . `cf set-env front50 SPRING_CLOUD_CONFIG_ENABLED true`
 . `cf set-env front50 SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
 
 gate:
+
+> **NOTE**: Pending https://github.com/spinnaker/gate/pull/187 to build uber jars
 
 . `./gradlew clean buildDeb`
 . `cf push gate -p gate-web/build/install/gate/`
@@ -160,15 +164,17 @@ gate:
 
 igor:
 
+> **NOTE**: Pending https://github.com/spinnaker/igor/pull/73 to build uber jars
+
 . `./gradlew clean buildDeb`
-. `cf push igor -p igor-web/build/install/gate/`
+. `cf push igor -p igor-web/build/install/igor/`
 . `cf set-env igor SPRING_CLOUD_CONFIG_ENABLED true`
 . `cf set-env igor SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
 
 orca:
 
-. `./gradlew clean buildDeb`
-. `cf push orca -p orca-web/build/install/gate/`
+. `./gradlew clean build`
+. `cf push orca -p orca-web/build/libs/orca-web-<version>.jar`
 . `cf set-env igor SPRING_CLOUD_CONFIG_ENABLED true`
 . `cf set-env igor SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
 
