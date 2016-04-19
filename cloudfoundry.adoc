@@ -117,8 +117,7 @@ front50:
 
 . `./gradlew clean build`
 . `cf push front50 -p front50-web/build/libs/front50-web-<version>.jar`
-. `cf set-env front50 SPRING_CLOUD_CONFIG_ENABLED true`
-. `cf set-env front50 SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
+. `cf set-env echo SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/front50.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/front50-local.yml`
 
 gate:
 
