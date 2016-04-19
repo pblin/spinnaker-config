@@ -132,12 +132,9 @@ gate:
 
 igor:
 
-> **NOTE**: Pending https://github.com/spinnaker/igor/pull/73 to build uber jars
-
-. `./gradlew clean buildDeb`
-. `cf push igor -p igor-web/build/install/igor/`
-. `cf set-env igor SPRING_CLOUD_CONFIG_ENABLED true`
-. `cf set-env igor SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
+. `./gradlew -DspringBoot.repackage=true clean build`
+. `cf push igor -p igor-web/build/libs/igor-web-<version>.jar`
+. `cf set-env orca SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/igor.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/igor-local.yml`
 
 orca:
 
