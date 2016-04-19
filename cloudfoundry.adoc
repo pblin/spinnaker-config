@@ -143,8 +143,7 @@ orca:
 
 . `./gradlew clean build`
 . `cf push orca -p orca-web/build/libs/orca-web-<version>.jar`
-. `cf set-env igor SPRING_CLOUD_CONFIG_ENABLED true`
-. `cf set-env igor SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
+. `cf set-env orca SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/orca.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/orca-local.yml`
 
 deck:
 
