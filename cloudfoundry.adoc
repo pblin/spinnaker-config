@@ -123,7 +123,7 @@ front50:
 
 gate:
 
-. `./gradlew clean buildDeb`
+. `./gradlew -DspringBoot.repackage=true clean build`
 . `cf push gate -p gate-web/build/libs/gate-web-<version>.jar`
 . `cf set-env echo SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/gate.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/gate-local.yml`
 
