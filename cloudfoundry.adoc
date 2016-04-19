@@ -83,23 +83,6 @@ $ redis-server
 
 Now you have a local redis server up and running.
 
-===== Cassandra
-
-Spinnaker uses Apache Cassandra 1.2, which is not the default homebrew formula. To do this, you need to install version support:
-
-----
-$ brew update
-$ brew tap homebrew/versions
-$ brew install cassandra12
-$ cassandra
-----
-
-This launches cassandra for local development work, but you aren't done. With a standalone cassandra instance, you have to load the keyspaces with a https://github.com/spinnaker/spinnaker/tree/master/cassandra[set of scripts]. This is analogous to loading a database schema.
-
-WARNING: To run Spinnaker locally, you need standalone cassandra. Otherwise, the two services will collide if they try to run embedded instances separately on the same default port. However, when deploying to Pivotal Cloud Foundry, p-cassandra supplies cassandra 2.0 and doesn't work. In that situation, you need embedded cassandra, which pre-loades the keyspaces. This is covered in the configuration settings mentioned earlier.
-
-This will spin up all the parts of Spinnaker needed to work with stuff. To develop any one module, shut down the copy in its shell, and instead open it up inside your IDE. Find the `Main` class and run it with the same environmental overrides.
-
 ===== Jenkins
 
 You can install p-jenkins in your cloud environment. It requires going to CloudBees and requesting a license (which I did, and managed to get a freebie). But if you're running in a local environment, you can probably get by using the https://jenkins-ci.org/[OSS version].
@@ -119,7 +102,7 @@ IMPORTANT: When using local file paths, you can simply point to the directory. T
 clouddriver:
 
 . `./gradlew -DspringBoot.repackage=true clean build`
-. `cf push clouddriver -p clouddriver-web/build/libs/clouddriver-web-<version>.ar`
+. `cf push clouddriver -p clouddriver-web/build/libs/clouddriver-web-<version>.jar`
 . `cf set-env clouddriver CF_ACCOUNT_NAME <your CF email>`
 . `cf set-env clouddriver CF_ACCOUNT_PASSWORD <your CF password>`
 . `cf set-env clouddriver SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/clouddriver.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/clouddriver-local.yml`
@@ -128,8 +111,7 @@ echo:
 
 . `./gradlew clean build`
 . `cf push echo -p echo-web/build/libs/echo-web-<version>.jar`
-. `cf set-env echo SPRING_CLOUD_CONFIG_ENABLED true`
-. `cf set-env echo SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
+. `cf set-env echo SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/echo.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/echo-local.yml`
 
 front50:
 
