@@ -105,6 +105,8 @@ clouddriver:
 . `cf push clouddriver -p clouddriver-web/build/libs/clouddriver-web-<version>.jar`
 . `cf set-env clouddriver CF_ACCOUNT_NAME <your CF email>`
 . `cf set-env clouddriver CF_ACCOUNT_PASSWORD <your CF password>`
+. `cf set-env clouddriver CF_REPO_USERNAME <your s3/artifactory username/accesskey for pulling artifacts>`
+. `cf set-env clouddriver CF_REPO_PASSWORD <your s3/artifactory password/secretkey for pulling artifacts>`
 . `cf set-env clouddriver SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/clouddriver.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/clouddriver-local.yml`
 
 echo:
