@@ -123,13 +123,9 @@ front50:
 
 gate:
 
-> **NOTE**: Pending https://github.com/spinnaker/gate/pull/187 to build uber jars
-
 . `./gradlew clean buildDeb`
-. `cf push gate -p gate-web/build/install/gate/`
-. `cf set-env gate SPRING_CLOUD_CONFIG_SERVER_BOOTSTRAP true`
-. `cf set-env gate SPRING_CLOUD_CONFIG_SERVER_ENABLED true`
-. `cf set-env gate SPRING_CLOUD_CONFIG_SERVER_GIT_URI https://github.com/gregturn/spinnaker-config/`
+. `cf push gate -p gate-web/build/libs/gate-web-<version>.jar`
+. `cf set-env echo SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/gate.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/gate-local.yml`
 
 igor:
 
