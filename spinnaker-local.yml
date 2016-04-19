@@ -127,6 +127,19 @@ services:
     enabled: true
     token: T091CRSGH/B0EH4V403/Awj1PAZceMauLmCZLPAHYudV
 
+spinnaker:
+  cassandra:
+    enabled: false
+    host: ${services.cassandra.host:localhost}
+    port: ${services.cassandra.port:9042}
+    cluster: ${services.cassandra.cluster:CASS_SPINNAKER}
+    keyspace: front50
+    name: global
+  redis:
+    enabled: true
+  inMemory:
+    enabled: true
+
 logging:
   level:
     com:

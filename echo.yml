@@ -17,3 +17,6 @@ endpoints.health.sensitive: false
 slack:
   enabled: ${services.slack.enabled}
   token: ${services.slack.token}
+
+scheduler:
+  enabled: true

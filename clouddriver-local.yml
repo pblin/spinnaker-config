@@ -18,12 +18,12 @@ cf:
       password: ${cf.account.password}
       artifactUsername: ${cf.repo.username}
       artifactPassword: ${cf.repo.password}
-    # - name: dev
-    #   api: ${providers.cf.primaryCredentials.api}
-    #   console: ${providers.cf.primaryCredentials.console}
-    #   org: ${providers.cf.defaultOrg}
-    #   space: microservices
-    #   username: ${cf.account.name}
-    #   password: ${cf.account.password}
-    #   artifactUsername: ${cf.repo.username}
-    #   artifactPassword: ${cf.repo.password}
+    - name: dev
+      api: ${providers.cf.primaryCredentials.api}
+      console: ${providers.cf.primaryCredentials.console}
+      org: ${providers.cf.defaultOrg}
+      space: dev
+      username: ${cf.account.name}
+      password: ${cf.account.password}
+      artifactUsername: ${cf.repo.username}
+      artifactPassword: ${cf.repo.password}
