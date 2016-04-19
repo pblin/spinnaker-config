@@ -112,31 +112,17 @@ If you need to trigger pipelines, you will want to set this up at some point.
 
 Want to use Spinnaker in a Cloud Foundry environment? Here are the steps to build and push to your CF environment.
 
-First and foremost, you need Spring Cloud Config Server. The alternative will keep you up all night configuring individual property files.
+First and foremost, you have to build each module as a uber JAR. Then you have to tell each module where to get it's designated property files.
 
-To do so, you need to visit each repo clone you created up above and do this:
-
-----
-$ cd clouddriver
-$ git remote add gregturn git@github.com:gregturn/clouddriver.git
-$ git fetch gregturn
-$ git checkout spring-cloud
-----
-
-Each of the modules above (except decK) has a spring-cloud branch. Repeat similar steps (swapping out `clouddriver` with the actual project) and then build that branch.
-
-Once you have done that, you can start pushing things to PCF as shown below:
+IMPORTANT: When using local file paths, you can simply point to the directory. To reference remote files on github, you have specify each file, separated by ",".
 
 clouddriver:
 
-> **NOTE**: Pending https://github.com/spinnaker/clouddriver/pull/465 to build uber jars
-
-. `./gradlew clean buildDeb`
-. `cf push clouddriver -p clouddriver-web/build/install/clouddriver`
+. `./gradlew -DspringBoot.repackage=true clean build`
+. `cf push clouddriver -p clouddriver-web/build/libs/clouddriver-web-<version>.ar`
 . `cf set-env clouddriver CF_ACCOUNT_NAME <your CF email>`
 . `cf set-env clouddriver CF_ACCOUNT_PASSWORD <your CF password>`
-. `cf set-env clouddriver SPRING_CLOUD_CONFIG_ENABLED true`
-. `cf set-env clouddriver SPRING_CLOUD_CONFIG_URI http://gate.white.springapps.io/config`
+. `cf set-env clouddriver SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/clouddriver.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/clouddriver-local.yml`
 
 echo:
 
