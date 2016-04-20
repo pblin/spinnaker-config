@@ -1,7 +1,3 @@
-server:
-  port: ${services.echo.port:8089}
-  address: ${services.echo.host:localhost}
-
 cassandra:
   embedded: ${services.cassandra.embedded:false}
   host: ${services.cassandra.host:localhost}

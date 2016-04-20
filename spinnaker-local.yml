@@ -56,9 +56,9 @@ services:
     host: localhost   # Assume all spinnaker subsystems are on localhost
     primaryAccountName: ${providers.cf.primaryCredentials.name}
 
-  echo:
-    host: echo.white.springapps.io
-    port: 80
+  # echo:
+    # host: echo.white.springapps.io
+    # port: 8080
 
   redis:
     # If you are using a remote redis server, you can set the host here.
