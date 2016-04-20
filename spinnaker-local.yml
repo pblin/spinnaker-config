@@ -52,7 +52,7 @@ services:
     # (clouddriver, gate, etc) at once, but not external systems (jenkins, etc).
     # Individual systems can still be overriden using their own section entry
     # directly under 'services'.
-    protocol: http    # Assume all spinnaker subsystems are using http
+    protocol: https    # Assume all spinnaker subsystems are using http
     host: localhost   # Assume all spinnaker subsystems are on localhost
     primaryAccountName: ${providers.cf.primaryCredentials.name}
 
