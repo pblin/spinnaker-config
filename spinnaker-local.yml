@@ -127,6 +127,20 @@ services:
     enabled: true
     token: T091CRSGH/B0EH4V403/Awj1PAZceMauLmCZLPAHYudV
 
+  clouddriver:
+    baseUrl: http://clouddriver.white.springapps.io
+  echo:
+    baseUrl: http://echo.white.springapps.io
+  front50:
+    baseUrl: http://front50.white.springapps.io
+  gate:
+    baseUrl: http://gate.white.springapps.io
+  igor:
+    baseUrl: http://igor.white.springapps.io
+  orca:
+    baseUrl: http://orca.white.springapps.io
+
+
 spinnaker:
   cassandra:
     enabled: false
