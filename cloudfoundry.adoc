@@ -119,19 +119,19 @@ front50:
 
 . `./gradlew clean build`
 . `cf push front50 -p front50-web/build/libs/front50-web-<version>.jar`
-. `cf set-env echo SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/front50.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/front50-local.yml`
+. `cf set-env front50 SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/front50.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/front50-local.yml`
 
 gate:
 
 . `./gradlew -DspringBoot.repackage=true clean build`
 . `cf push gate -p gate-web/build/libs/gate-web-<version>.jar`
-. `cf set-env echo SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/gate.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/gate-local.yml`
+. `cf set-env gate SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/gate.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/gate-local.yml`
 
 igor:
 
 . `./gradlew -DspringBoot.repackage=true clean build`
 . `cf push igor -p igor-web/build/libs/igor-web-<version>.jar`
-. `cf set-env orca SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/igor.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/igor-local.yml`
+. `cf set-env igor SPRING_CONFIG_LOCATION https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/spinnaker-local.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/igor.yml,https://raw.githubusercontent.com/gregturn/spinnaker-config/master/igor-local.yml`
 
 orca:
 
