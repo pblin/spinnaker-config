@@ -117,6 +117,8 @@ services:
     # If you are integrating Jenkins then you must also enable Spinnaker's
     # "igor" subsystem.
     enabled: true
+    host: igor.white.springapps.io
+    port: 80
 
   rush:
     # Spinnaker's "rush" subsystem is used by the "rosco" bakery.
@@ -134,8 +136,6 @@ services:
     baseUrl: http://front50.white.springapps.io
   gate:
     baseUrl: http://gate.white.springapps.io
-  igor:
-    baseUrl: http://igor.white.springapps.io
   orca:
     baseUrl: http://orca.white.springapps.io
 
