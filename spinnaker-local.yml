@@ -56,10 +56,6 @@ services:
     host: localhost   # Assume all spinnaker subsystems are on localhost
     primaryAccountName: ${providers.cf.primaryCredentials.name}
 
-  # echo:
-    # host: echo.white.springapps.io
-    # port: 8080
-
   redis:
     # If you are using a remote redis server, you can set the host here.
     # If the remote server is on a different port or url, you can add
@@ -131,16 +127,18 @@ services:
     token: T091CRSGH/B0EH4V403/Awj1PAZceMauLmCZLPAHYudV
 
   clouddriver:
-    baseUrl: http://clouddriver.white.springapps.io
+    baseUrl: ${services.default.protocol}://clouddriver.white.springapps.io
+  echo:
+    baseUrl: ${services.default.protocol}://echo.white.springapps.io
   front50:
-    baseUrl: http://front50.white.springapps.io
+    baseUrl: ${services.default.protocol}://front50.white.springapps.io
   gate:
-    baseUrl: http://gate.white.springapps.io
+    baseUrl: ${services.default.protocol}://gate.white.springapps.io
   orca:
-    baseUrl: http://orca.white.springapps.io
+    baseUrl: ${services.default.protocol}://orca.white.springapps.io
 
 spinnaker:
-  baseUrl: http://deck.white.springapps.io
+  baseUrl: ${services.default.protocol}://deck.white.springapps.io
   cassandra:
     enabled: false
     host: ${services.cassandra.host:localhost}
