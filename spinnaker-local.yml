@@ -57,6 +57,7 @@ services:
     primaryAccountName: ${providers.cf.primaryCredentials.name}
 
   echo:
+    baseUrl: http://echo.white.springapps.io
     enabled: true
 
   redis:
@@ -129,8 +130,6 @@ services:
 
   clouddriver:
     baseUrl: http://clouddriver.white.springapps.io
-  echo:
-    baseUrl: http://echo.white.springapps.io
   front50:
     baseUrl: http://front50.white.springapps.io
   gate:
@@ -139,7 +138,6 @@ services:
     baseUrl: http://igor.white.springapps.io
   orca:
     baseUrl: http://orca.white.springapps.io
-
 
 spinnaker:
   cassandra:
