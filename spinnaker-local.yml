@@ -113,6 +113,9 @@ services:
       username: admin
       password: 7c9197dc00c378fb2ef5bc1d79a4b220
 
+  redis:
+    connection: redis://username:9b8d2705-6221-4c90-80b8-27bddf151a95@10.68.203.83:6379
+
   igor:
     # If you are integrating Jenkins then you must also enable Spinnaker's
     # "igor" subsystem.

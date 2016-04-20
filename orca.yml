@@ -1,7 +1,3 @@
-server:
-    port: ${services.orca.port:8083}
-    address: ${services.orca.host:localhost}
-
 oort:
     baseUrl: ${services.oort.baseUrl:localhost:7002}
 front50:

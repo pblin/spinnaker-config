@@ -1,7 +1,3 @@
-server:
-  port: ${services.clouddriver.port:7002}
-  address: ${services.clouddriver.host:localhost}
-
 #circular
 #services:
 #  front50:

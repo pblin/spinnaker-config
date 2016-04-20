@@ -1,7 +1,3 @@
-server:
-  port: ${services.front50.port:7002}
-  address: ${services.front50.host:localhost}
-
 cassandra:
   enabled: ${spinnaker.cassandra.enabled}
   embedded: ${services.cassandra.embedded:false}

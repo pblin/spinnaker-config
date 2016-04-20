@@ -1,7 +1,3 @@
-server:
-    port: ${services.rush.port:8085}
-    address: ${services.rush.host:localhost}
-
 cassandra:
   embedded: ${services.cassandra.embedded:false}
   host: ${services.cassandra.host:localhost}

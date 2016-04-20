@@ -1,7 +1,3 @@
-server:
-  port: ${services.gate.port:9999}
-  address: ${services.gate.host:localhost}
-
 # Circular references since we're already using 'services'
 # services:
 #   oort:
