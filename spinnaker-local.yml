@@ -140,6 +140,7 @@ services:
     baseUrl: http://orca.white.springapps.io
 
 spinnaker:
+  baseUrl: http://deck.white.springapps.io
   cassandra:
     enabled: false
     host: ${services.cassandra.host:localhost}
