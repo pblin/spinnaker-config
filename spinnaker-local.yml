@@ -57,8 +57,8 @@ services:
     primaryAccountName: ${providers.cf.primaryCredentials.name}
 
   echo:
-    baseUrl: http://echo.white.springapps.io
-    enabled: true
+    host: echo.white.springapps.io
+    port: 80
 
   redis:
     # If you are using a remote redis server, you can set the host here.
