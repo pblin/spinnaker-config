@@ -128,6 +128,7 @@ services:
     token: T091CRSGH/B0EH4V403/Awj1PAZceMauLmCZLPAHYudV
 
 spinnaker:
+  baseUrl: ${services.gate.baseUrl}
   cassandra:
     enabled: false
     host: ${services.cassandra.host:localhost}
