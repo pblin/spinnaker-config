@@ -127,15 +127,20 @@ services:
     token: T091CRSGH/B0EH4V403/Awj1PAZceMauLmCZLPAHYudV
 
   clouddriver:
-    baseUrl: ${services.default.protocol}://clouddriver.white.springapps.io
+    host: clouddriver.white.springapps.io
+    port: 80
   echo:
-    baseUrl: ${services.default.protocol}://echo.white.springapps.io
+    host: echo.white.springapps.io
+    port: 80
   front50:
-    baseUrl: ${services.default.protocol}://front50.white.springapps.io
+    host: front50.white.springapps.io
+    port: 80
   gate:
-    baseUrl: ${services.default.protocol}://gate.white.springapps.io
+    host: gate.white.springapps.io
+    port: 80
   orca:
-    baseUrl: ${services.default.protocol}://orca.white.springapps.io
+    host: orca.white.springapps.io
+    port: 80
 
 spinnaker:
   baseUrl: ${services.default.protocol}://deck.white.springapps.io
