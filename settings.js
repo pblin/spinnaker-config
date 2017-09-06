@@ -14,33 +14,15 @@ window.spinnakerSettings = {
   pollSchedule: 30000,
   defaultTimeZone: process.env.TIMEZONE || 'America/Los_Angeles', // see http://momentjs.com/timezone/docs/#/data-utilities/
   providers: {
-    cf: {
+  cf: {
       defaults: {
-        account: 'prod',
-        region: 'spinnaker'
+        account: 'hgallodev',
+        region: 'Spinnaker_POC',
+        zone: 'hgallodev'
       },
-      primaryAccounts: ['prod', 'staging', 'dev'],
-      primaryRegions: ['spinnaker'],
-      challengeDestructiveActions: ['prod', 'staging', 'dev'],
-      defaultSecurityGroups: [],
-      accountBastions : {
-      },
-      preferredZonesByAccount: {
-        prod: {
-          'spinnaker': ['production']
-        },
-        staging: {
-          'spinnaker': ['staging']
-        },
-        dev: {
-          'spinnaker': ['development']
-        },
-        default: {
-          'spinnaker': ['production']
-        }
-      }
-    }
-  },
+      primaryAccounts: 'hgallodev'
+    },
+
   whatsNew: {
     gistId: '32526cd608db3d811b38',
     fileName: 'news.md',

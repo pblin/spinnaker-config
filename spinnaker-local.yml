@@ -124,13 +124,13 @@ services:
     primaryAccount: ${services.default.primaryAccountName}
 
   slack:
-    enabled: true
+    enabled: false
     token: T091CRSGH/B0EH4V403/Awj1PAZceMauLmCZLPAHYudV
 
 spinnaker:
   baseUrl: ${services.gate.baseUrl}
   cassandra:
-    enabled: false
+    enabled: true
     host: ${services.cassandra.host:localhost}
     port: ${services.cassandra.port:9042}
     cluster: ${services.cassandra.cluster:CASS_SPINNAKER}

@@ -44,10 +44,10 @@ google:
 cf:
   enabled: ${providers.cf.enabled:false}
   accounts:
-    - name: ${providers.cf.primaryCredentials.name}
-      api: ${providers.cf.primaryCredentials.api}
-      console: ${providers.cf.primaryCredentials.console}
-      org: ${providers.cf.defaultOrg}
-      space: ${providers.cf.defaultSpace}
-      username: ${cf.account.name}
-      password: ${cf.account.password}
+    - name: bernard.lin@contino.io 
+      api: api.run.pivotal.io
+      console: console.run.pivotal.io
+      org: berlin
+      space: Development
+      username: bernard.lin@contino.io
+      password: 8We1c0me!
